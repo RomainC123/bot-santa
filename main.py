@@ -1,7 +1,6 @@
-from telegram.ext import CommandHandler
 from functions import *
 import logging
-from telegram.ext import Updater, Filters
+from telegram.ext import Updater, Filters, CommandHandler
 
 with open('data/token.txt', 'r') as f:
     token = f.read().strip()
