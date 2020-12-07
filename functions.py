@@ -35,7 +35,7 @@ def start(update, context):
     Welcome message on /start
     """
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Bienvenue chez le bot Secret Santa de la P2022 !\nPour rejoindre le tirage, utilise /join.\nPour voir la liste des participants, utilise /list. \nPour obtenir le nom de la personnage à qui tu devras offrir quelque chose, utilise /get_name. \n")
+                             text="Welcome to bot-Santa!\nTo join the pool of participants, use /join.\nTo see the list of participants, use /list. \nTo get the name of the person that was drawn for you, use /get_name. \n")
 
 
 def reset(update, context):
@@ -49,10 +49,10 @@ def reset(update, context):
         if path.exists("data/assignements.pkl"):
             os.remove('data/assignements.pkl')
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Reset effectué")
+                                 text="Reset done")
     except:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Erreur conceptuelle maggle, va voir ton admin")
+                                 text="Error, please check https://github.com/RomainC123/bot-santa and add a pull request")
 
 
 def add(update, context):
@@ -76,10 +76,10 @@ def add(update, context):
             pickle.dump(list_participants, f)
 
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Ajout effectué")
+                                 text="Participants added")
     else:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="L'assignement des couples a déjà été effectué, il n'est donc plus possible d'ajouter de nouveaux participants")
+                                 text="Couple assignement has already been done, it's not possible to add more participants now.")
 
 
 def assign(update, context):
@@ -102,10 +102,10 @@ def assign(update, context):
             pickle.dump(dict_couples, f)
 
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Assignements effectués")
+                                 text="Assignements done")
     except:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="La liste des participants n'existe pas ou est invalide")
+                                 text="Participants list empty of invalid")
 
 
 def list_participants(update, context):
@@ -118,7 +118,7 @@ def list_participants(update, context):
 
         if len(list_participants) == 0:
             context.bot.send_message(chat_id=update.message.chat_id,
-                                     text="Il n'y a pas encore de participants")
+                                     text="There are no participants yet")
         else:
             text = ''
             for username in list_participants:
@@ -127,7 +127,7 @@ def list_participants(update, context):
                                      text=text)
     except:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Il n'y a pas encore de participants")
+                                 text="There are no participants yet")
 
 
 def join(update, context):
@@ -149,10 +149,10 @@ def join(update, context):
             pickle.dump(list_participants, f)
 
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Ajout effectué")
+                                 text="You have been added")
     else:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="L'assignement des couples a déjà été effectué, il n'est donc plus possible de rejoindre")
+                                 text="Couple assignement has already been done, it is too late to join now")
 
 
 def get_name(update, context):
@@ -164,12 +164,12 @@ def get_name(update, context):
             dict_couples = pickle.load(f)
 
         username = update.message.from_user.username
-        text = f'Tu dois donner un cadeau à {dict_couples["@" + username]}'
+        text = f'You will be giving a gift to {dict_couples["@" + username]}'
         context.bot.send_message(chat_id=update.message.chat_id,
                                  text=text)
     except:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Les assignements n'ont pas encore été faits")
+                                 text="Couple assignement hasn't been done yet")
 
 
 def get_all(update, context):
@@ -183,9 +183,9 @@ def get_all(update, context):
 
         text = ''
         for giver in dict_couples:
-            text += f'{giver} donne un cadeau à {dict_couples[giver]}\n'
+            text += f'{giver} gives a gift to {dict_couples[giver]}\n'
         context.bot.send_message(chat_id=update.message.chat_id,
                                  text=text)
     except:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text="Les assignements n'ont pas encore été faits")
+                                 text="Couple assignement hasn't been done yet")
