@@ -6,7 +6,7 @@ This bot will allow you to setup secret santa draws through Telegram's API.
 
 1. You will need to create a bot using @BotFather on Telegram. Just start a chat with him, and follow the instructions to create your bot. This will allow you to name it, and to get its token.
 
-2. Create a folder name data at the root of your repo, and create two files, admins.txt and token.txt inside of it. Then paste your bot token in the token.txt file. You will also need to choose at least one admin, to do so add its Telegram username (without the @, hence if your @ telegram is '@username', then you will need to write 'username' (without the quotes) in your admins.txt file). If you want to add more than one admin, just each new username on a new line.
+2. Create a folder name data at the root of your repo, and create two files, admins.txt and token.txt inside of it. Then paste your bot token in the token.txt file. You will also need to choose at least one admin, to do so add its Telegram username (without the @, hence if your @ telegram is '@username', then you will need to write 'username' (without the quotes) in your admins.txt file). If you want to add more than one admin, just add each new username on a new line.
 
 3. Open a terminal, and make sure you have docker installed (check this https://docs.docker.com/get-docker/ for instructions on how to achieve that). Then run the following commands, making sure you still are in your app folder:
 
@@ -21,9 +21,9 @@ docker run -i -t --rm santa-app
 
 The followings commands are available:
 
-* Admin commands : these commands are only available to admins, if you username isn't in admins.txt, then these commands won't do anything.
+* Admin commands : these commands are only available to admins, if your username isn't in admins.txt, then these commands won't do anything.
 
-  1. /reset: Clears the data folder, removes all participants and all pairings.
+  1. /reset: Clears the data folder, removing all participants and all pairings.
 
   2. /add: Allows an admin to add a list of @ to the list of participants. To use it, write /add @username1 @username2, adding a space between each username.
 
