@@ -2,7 +2,7 @@
 
 This bot will allow you to setup secret santa draws through Telegram's API.
 
-# Setup
+## Setup
 
 1. You will need to create a bot using @BotFather on Telegram. Just start a chat with him, and follow the instructions to create your bot. This will allow you to name it, and to get its token.
 
@@ -17,7 +17,7 @@ docker run -i -t --rm santa-app
 
 4. You should see the log output of your bot. To shut it down, press Ctrl (or cmd) + c. To restart it, just run the second line from the above commands.
 
-# Bot commands
+## Bot commands
 
 The followings commands are available:
 
